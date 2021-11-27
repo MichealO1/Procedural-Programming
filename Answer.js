@@ -15,7 +15,7 @@ Use array for presenting the vector.
 Use nested loop (a loop inside another)
 Use different types of passing parameters */
 
-const vectors = [
+let vectors = [
   [7, 1, 1],
   [6, 0, 2],
   [5, 7, 0],
@@ -24,26 +24,18 @@ const vectors = [
   [0, 0, 0],
 ];
 
-ALGORITHM dotProduct
-VAR
-  vectors: ARRAY_OF INTEGER;
-  result: INTEGER: = 0
-BEGIN
-  FOR i FROM 0 TO vector1.length-1  STEP 1 DO THEN
-
+function dotProduct(vector1, vector2) {
+  let result = 0;
+  for (let i = 0; i < vector1.length; i++) {
     result += vector1[i] * vector2[i];
+  }
+  return result;
+}
 
-  END_FOR
-  
-  Write(result);
-
-  FOR i FROM 0 TO vectors.length-1  STEP 1 DO THEN
-    FOR j FROM 1 + 1; J < vectors.length-1 STEP 2 DO THEN 
-      IF (dotProduct(vectors[i], vectors[j]) === 0) THEN
-        Write(vectors[i],vectors[j])
-      END_IF
-    END_FOR
-  END_FOR
-
-
-END
+for (let i = 0; i < vectors.length; i++) {
+  for (let j = i + 1; j < vectors.length; j++) {
+    if (dotProduct(vectors[i], vectors[j]) === 0) {
+      console.log(`${vectors[i]} and ${vectors[j]} are orthogonal `);
+    }
+  }
+}
